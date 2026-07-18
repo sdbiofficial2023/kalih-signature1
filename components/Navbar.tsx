@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { WHATSAPP_RESERVATION_URL } from "@/lib/constants";
 
 const NAV_LINKS = [
@@ -22,20 +23,29 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 w-full z-50 bg-white/80 backdrop-blur-xl border-b border-black/5 transition-all duration-500 ${
-        isScrolled ? "h-16 shadow-sm" : "h-20"
+      className={`fixed top-0 w-full z-50 bg-primary/95 backdrop-blur-xl border-b border-white/10 transition-all duration-500 ${
+        isScrolled ? "h-16 shadow-lg shadow-black/10" : "h-20"
       }`}
     >
       <div className="flex justify-between items-center w-full px-gutter max-w-container-max mx-auto h-full">
-        <a href="#top" className="font-display text-2xl font-bold tracking-tight text-primary">
-          Kalih Signature
+        <a href="#top" className="flex items-center shrink-0">
+          <Image
+            src="/logos-navbar/logo-navbar.png"
+            alt="Kalih Signature"
+            width={64}
+            height={64}
+            priority
+            className={`transition-all duration-500 ${
+              isScrolled ? "h-11 w-11 md:h-12 md:w-12" : "h-14 w-14 md:h-16 md:w-16"
+            }`}
+          />
         </a>
         <div className="hidden lg:flex items-center gap-10">
           {NAV_LINKS.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="text-sm font-medium hover:text-primary transition-colors"
+              className="text-sm font-medium text-white/80 hover:text-white transition-colors"
             >
               {link.label}
             </a>
@@ -46,7 +56,7 @@ export default function Navbar() {
             href={WHATSAPP_RESERVATION_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-primary text-white text-sm font-semibold px-8 py-3 rounded-full hover:shadow-xl hover:shadow-primary/20 transition-all active:scale-95"
+            className="bg-white text-primary text-sm font-semibold px-8 py-3 rounded-full hover:shadow-xl hover:shadow-black/10 transition-all active:scale-95"
           >
             Reservasi Sekarang
           </a>
