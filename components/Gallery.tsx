@@ -4,7 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { STOCK_IMAGES } from "@/lib/stock-images";
 
-const CATEGORIES = ["Semua", "Keluarga", "Arsitektur", "Kuliner"] as const;
+const CATEGORIES = ["Semua", "Ambience", "Coffee", "Event", "Food"] as const;
 type Category = (typeof CATEGORIES)[number];
 
 const PHOTOS: {
@@ -14,33 +14,45 @@ const PHOTOS: {
   span: string;
 }[] = [
     {
-      src: "/images-gallery/1.png",
+      src: "/images-gallery/food1.png",
       alt: "",
-      category: "Arsitektur",
+      category: "Food",
       span: "masonry-item-tall",
     },
     {
-      src: "/images-gallery/2.png",
+      src: "/images-gallery/food2.png",
       alt: "",
-      category: "Keluarga",
+      category: "Food",
       span: "",
     },
     {
-      src: "/images-gallery/3.png",
+      src: "/images-gallery/ambience1.png",
       alt: "",
-      category: "Arsitektur",
+      category: "Ambience",
       span: "masonry-item-wide",
     },
     {
-      src: "/images-gallery/4.png",
+      src: "/images-gallery/ambience2.png",
       alt: "",
-      category: "Kuliner",
+      category: "Ambience",
+      span: ""
+    },
+    {
+      src: "/images-gallery/ambience3.png",
+      alt: "",
+      category: "Ambience",
+      span: ""
+    },
+    {
+      src: "/images-gallery/coffee1.png",
+      alt: "",
+      category: "Coffee",
       span: "",
     },
     {
-      src: "/images-gallery/5.png",
+      src: "/images-gallery/event1.png",
       alt: "",
-      category: "Arsitektur",
+      category: "Event",
       span: "masonry-item-tall",
     },
   ];
