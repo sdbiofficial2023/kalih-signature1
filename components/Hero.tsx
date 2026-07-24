@@ -56,7 +56,7 @@ export default function Hero() {
   return (
     <section
       id="top"
-      className="relative min-h-screen flex items-center justify-center pt-20 pb-16 sm:pt-24 sm:pb-10"
+      className="relative flex items-center justify-center pt-24 pb-16 sm:min-h-screen sm:pt-24 sm:pb-10"
     >
       <div className="absolute inset-0 z-0 overflow-hidden">
         <Image

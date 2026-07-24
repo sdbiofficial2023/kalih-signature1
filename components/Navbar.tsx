@@ -47,8 +47,8 @@ export default function Navbar() {
           <Image
             src="/logos-navbar/kalih-new.png"
             alt="Kalih Signature"
-            width={160}
-            height={200}
+            width={300}
+            height={159}
             priority
             className={`w-auto transition-all duration-500 ${isScrolled ? "h-9 sm:h-12 md:h-14" : "h-10 sm:h-16 md:h-22"
               }`}
