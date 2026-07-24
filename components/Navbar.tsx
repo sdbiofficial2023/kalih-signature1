@@ -45,7 +45,7 @@ export default function Navbar() {
       <div className="flex justify-between items-center w-full px-gutter max-w-container-max mx-auto h-full">
         <Link href="/" className="flex items-center shrink-0">
           <Image
-            src="/logos-navbar/kalih-new.png"
+            src="/logos-navbar/kalih-new.webp"
             alt="Kalih Signature"
             width={300}
             height={159}

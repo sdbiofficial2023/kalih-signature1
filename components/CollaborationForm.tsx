@@ -62,9 +62,9 @@ export default function CollaborationForm() {
   return (
     <section id="collaboration" data-reveal className="py-24 bg-white">
       <div className="px-gutter max-w-container-max mx-auto">
-        <div className="bg-surface p-8 md:p-12 rounded-3xl shadow-2xl shadow-primary/5 border border-primary/5">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-            <div className="bg-white p-8 rounded-2xl shadow-xl shadow-primary/5">
+        <div className="bg-surface p-4 sm:p-8 md:p-12 rounded-2xl sm:rounded-3xl shadow-2xl shadow-primary/5 border border-primary/5">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 items-start">
+            <div className="bg-white p-5 sm:p-8 rounded-2xl shadow-xl shadow-primary/5">
               {status === "submitted" ? (
                 <div className="text-center py-10">
                   <span className="material-symbols-outlined text-primary text-5xl mb-4 fill-1">
@@ -76,27 +76,27 @@ export default function CollaborationForm() {
                   </p>
                 </div>
               ) : (
-                <form className="space-y-6" onSubmit={handleSubmit}>
+                <form className="space-y-4 sm:space-y-6" onSubmit={handleSubmit}>
                   <input
                     required
                     name="name"
                     type="text"
                     placeholder="Nama Lengkap / Instansi"
-                    className="w-full px-6 py-4 rounded-lg border border-black/10 bg-surface focus:border-primary focus:ring-1 focus:ring-primary/20 transition-all outline-none"
+                    className="w-full px-4 py-3.5 sm:px-6 sm:py-4 rounded-lg border border-black/10 bg-surface focus:border-primary focus:ring-1 focus:ring-primary/20 transition-all outline-none"
                   />
                   <input
                     required
                     name="email"
                     type="email"
                     placeholder="Email"
-                    className="w-full px-6 py-4 rounded-lg border border-black/10 bg-surface focus:border-primary focus:ring-1 focus:ring-primary/20 transition-all outline-none"
+                    className="w-full px-4 py-3.5 sm:px-6 sm:py-4 rounded-lg border border-black/10 bg-surface focus:border-primary focus:ring-1 focus:ring-primary/20 transition-all outline-none"
                   />
                   <div className="relative">
                     <select
                       required
                       name="interest"
                       defaultValue=""
-                      className="w-full px-6 py-4 rounded-lg border border-black/10 bg-surface focus:border-primary focus:ring-1 focus:ring-primary/20 transition-all outline-none appearance-none"
+                      className="w-full px-4 py-3.5 sm:px-6 sm:py-4 pr-11 sm:pr-12 rounded-lg border border-black/10 bg-surface focus:border-primary focus:ring-1 focus:ring-primary/20 transition-all outline-none appearance-none"
                     >
                       <option value="" disabled>
                         Minat Kolaborasi
@@ -107,7 +107,7 @@ export default function CollaborationForm() {
                         </option>
                       ))}
                     </select>
-                    <span className="material-symbols-outlined absolute right-6 top-1/2 -translate-y-1/2 pointer-events-none text-secondary">
+                    <span className="material-symbols-outlined absolute right-4 sm:right-6 top-1/2 -translate-y-1/2 pointer-events-none text-secondary">
                       expand_more
                     </span>
                   </div>
@@ -116,11 +116,11 @@ export default function CollaborationForm() {
                     name="message"
                     rows={4}
                     placeholder="Ceritakan detail event atau ide kolaborasi Anda..."
-                    className="w-full px-6 py-4 rounded-lg border border-black/10 bg-surface focus:border-primary focus:ring-1 focus:ring-primary/20 transition-all outline-none"
+                    className="w-full px-4 py-3.5 sm:px-6 sm:py-4 rounded-lg border border-black/10 bg-surface focus:border-primary focus:ring-1 focus:ring-primary/20 transition-all outline-none"
                   />
                   <button
                     type="submit"
-                    className="w-full bg-primary text-white font-bold py-5 rounded-lg hover:shadow-xl hover:scale-[1.02] transition-all active:scale-95 shadow-lg shadow-primary/20"
+                    className="w-full bg-primary text-white font-bold py-4 sm:py-5 rounded-lg hover:shadow-xl hover:scale-[1.02] transition-all active:scale-95 shadow-lg shadow-primary/20"
                   >
                     Kirim Pesan Kolaborasi
                   </button>
@@ -129,14 +129,14 @@ export default function CollaborationForm() {
             </div>
 
             <div>
-              <h2 className="font-display text-4xl font-bold text-primary mb-6 tracking-tight leading-tight">
+              <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-primary mb-4 sm:mb-6 tracking-tight leading-tight">
                 Kemitraan &amp; Kolaborasi Strategis
               </h2>
-              <p className="text-secondary text-lg mb-10 leading-relaxed">
+              <p className="text-secondary text-base sm:text-lg mb-6 sm:mb-10 leading-relaxed">
                 Solusi venue premium untuk Corporate, EO, WO, dan KOL. Wujudkan event berkelas
                 dengan fasilitas lengkap di Kalih Signature.
               </p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-8">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6 sm:gap-y-8">
                 {CATEGORIES.map((category) => (
                   <div key={category.title}>
                     <p className="text-xs font-bold uppercase tracking-widest text-primary mb-2">

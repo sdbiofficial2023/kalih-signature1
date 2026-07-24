@@ -88,6 +88,16 @@ body {
   }
 }
 
+/* Hides scrollbar while keeping horizontal scroll functional (category tabs, etc.) */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
 /* Scroll-reveal animation for sections (see components/ScrollReveal.tsx) */
 [data-reveal] {
   opacity: 0;

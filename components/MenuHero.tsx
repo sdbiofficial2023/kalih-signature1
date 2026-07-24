@@ -16,7 +16,7 @@ export default function MenuHero() {
           href={WHATSAPP_RESERVATION_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="bg-primary text-white px-10 py-4 rounded-full font-bold hover:shadow-2xl hover:scale-105 transition-all active:scale-95"
+          className="bg-primary text-white px-10 py-4 rounded-full font-bold hover:shadow-2xl hover:scale-105 transition-all active:scale-95 text-center"
         >
           Reservasi Sekarang
         </a>

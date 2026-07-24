@@ -14,42 +14,42 @@ const PHOTOS: {
   span: string;
 }[] = [
     // Ambience
-    { src: "/images-gallery/a1.png", alt: "Ambience Kalih", category: "Ambience", span: "masonry-item-tall" },
-    { src: "/images-gallery/a1.2.png", alt: "Ambience Kalih", category: "Ambience", span: "" },
-    { src: "/images-gallery/a1.3.png", alt: "Ambience Kalih", category: "Ambience", span: "" },
-    { src: "/images-gallery/a1.4.png", alt: "Ambience Kalih", category: "Ambience", span: "masonry-item-wide" },
-    { src: "/images-gallery/a.2.png", alt: "Ambience Kalih", category: "Ambience", span: "" },
-    { src: "/images-gallery/a.2.2.png", alt: "Ambience Kalih", category: "Ambience", span: "" },
-    { src: "/images-gallery/a3.png", alt: "Ambience Kalih", category: "Ambience", span: "masonry-item-tall" },
-    { src: "/images-gallery/a3.3.png", alt: "Ambience Kalih", category: "Ambience", span: "" },
-    { src: "/images-gallery/a4.png", alt: "Ambience Kalih", category: "Ambience", span: "" },
-    { src: "/images-gallery/a4.4.png", alt: "Ambience Kalih", category: "Ambience", span: "masonry-item-wide" },
-    { src: "/images-gallery/a4.5.png", alt: "Ambience Kalih", category: "Ambience", span: "" },
+    { src: "/images-gallery/a1.webp", alt: "Ambience Kalih", category: "Ambience", span: "masonry-item-tall" },
+    { src: "/images-gallery/a1.2.webp", alt: "Ambience Kalih", category: "Ambience", span: "" },
+    { src: "/images-gallery/a1.3.webp", alt: "Ambience Kalih", category: "Ambience", span: "" },
+    { src: "/images-gallery/a1.4.webp", alt: "Ambience Kalih", category: "Ambience", span: "masonry-item-wide" },
+    { src: "/images-gallery/a.2.webp", alt: "Ambience Kalih", category: "Ambience", span: "" },
+    { src: "/images-gallery/a.2.2.webp", alt: "Ambience Kalih", category: "Ambience", span: "" },
+    { src: "/images-gallery/a3.webp", alt: "Ambience Kalih", category: "Ambience", span: "masonry-item-tall" },
+    { src: "/images-gallery/a3.3.webp", alt: "Ambience Kalih", category: "Ambience", span: "" },
+    { src: "/images-gallery/a4.webp", alt: "Ambience Kalih", category: "Ambience", span: "" },
+    { src: "/images-gallery/a4.4.webp", alt: "Ambience Kalih", category: "Ambience", span: "masonry-item-wide" },
+    { src: "/images-gallery/a4.5.webp", alt: "Ambience Kalih", category: "Ambience", span: "" },
     // Coffee
-    { src: "/images-gallery/c1.png", alt: "Coffee Kalih", category: "Coffee & Non Coffee", span: "" },
-    { src: "/images-gallery/c1.1.png", alt: "Coffee Kalih", category: "Coffee & Non Coffee", span: "masonry-item-tall" },
-    { src: "/images-gallery/c2.png", alt: "Coffee Kalih", category: "Coffee & Non Coffee", span: "masonry-item-wide" },
-    { src: "/images-gallery/c3.png", alt: "Coffee Kalih", category: "Coffee & Non Coffee", span: "" },
-    { src: "/images-gallery/c4.1.png", alt: "Coffee Kalih", category: "Coffee & Non Coffee", span: "" },
-    { src: "/images-gallery/c4.2.png", alt: "Coffee Kalih", category: "Coffee & Non Coffee", span: "" },
-    { src: "/images-gallery/c4..4.png", alt: "Coffee Kalih", category: "Coffee & Non Coffee", span: "masonry-item-tall" },
-    { src: "/images-gallery/c5.png", alt: "Coffee Kalih", category: "Coffee & Non Coffee", span: "" },
-    { src: "/images-gallery/c5.5.png", alt: "Coffee Kalih", category: "Coffee & Non Coffee", span: "" },
+    { src: "/images-gallery/c1.webp", alt: "Coffee Kalih", category: "Coffee & Non Coffee", span: "" },
+    { src: "/images-gallery/c1.1.webp", alt: "Coffee Kalih", category: "Coffee & Non Coffee", span: "masonry-item-tall" },
+    { src: "/images-gallery/c2.webp", alt: "Coffee Kalih", category: "Coffee & Non Coffee", span: "masonry-item-wide" },
+    { src: "/images-gallery/c3.webp", alt: "Coffee Kalih", category: "Coffee & Non Coffee", span: "" },
+    { src: "/images-gallery/c4.1.webp", alt: "Coffee Kalih", category: "Coffee & Non Coffee", span: "" },
+    { src: "/images-gallery/c4.2.webp", alt: "Coffee Kalih", category: "Coffee & Non Coffee", span: "" },
+    { src: "/images-gallery/c4..4.webp", alt: "Coffee Kalih", category: "Coffee & Non Coffee", span: "masonry-item-tall" },
+    { src: "/images-gallery/c5.webp", alt: "Coffee Kalih", category: "Coffee & Non Coffee", span: "" },
+    { src: "/images-gallery/c5.5.webp", alt: "Coffee Kalih", category: "Coffee & Non Coffee", span: "" },
     // Food
-    { src: "/images-gallery/f1.png", alt: "Food Kalih", category: "Food", span: "masonry-item-tall" },
-    { src: "/images-gallery/f1.1.png", alt: "Food Kalih", category: "Food", span: "" },
-    { src: "/images-gallery/f2.png", alt: "Food Kalih", category: "Food", span: "masonry-item-wide" },
-    { src: "/images-gallery/f2.2.png", alt: "Food Kalih", category: "Food", span: "" },
-    { src: "/images-gallery/f3.1.png", alt: "Food Kalih", category: "Food", span: "" },
-    { src: "/images-gallery/f3.2.png", alt: "Food Kalih", category: "Food", span: "" },
-    { src: "/images-gallery/f4.png", alt: "Food Kalih", category: "Food", span: "masonry-item-tall" },
-    { src: "/images-gallery/f5.png", alt: "Food Kalih", category: "Food", span: "" },
-    { src: "/images-gallery/f5.1.png", alt: "Food Kalih", category: "Food", span: "" },
+    { src: "/images-gallery/f1.webp", alt: "Food Kalih", category: "Food", span: "masonry-item-tall" },
+    { src: "/images-gallery/f1.1.webp", alt: "Food Kalih", category: "Food", span: "" },
+    { src: "/images-gallery/f2.webp", alt: "Food Kalih", category: "Food", span: "masonry-item-wide" },
+    { src: "/images-gallery/f2.2.webp", alt: "Food Kalih", category: "Food", span: "" },
+    { src: "/images-gallery/f3.1.webp", alt: "Food Kalih", category: "Food", span: "" },
+    { src: "/images-gallery/f3.2.webp", alt: "Food Kalih", category: "Food", span: "" },
+    { src: "/images-gallery/f4.webp", alt: "Food Kalih", category: "Food", span: "masonry-item-tall" },
+    { src: "/images-gallery/f5.webp", alt: "Food Kalih", category: "Food", span: "" },
+    { src: "/images-gallery/f5.1.webp", alt: "Food Kalih", category: "Food", span: "" },
     // Event (placeholder - ganti nanti)
-    { src: "/images-gallery/e1.png", alt: "Event Kalih", category: "Event", span: "masonry-item-wide" },
-    { src: "/images-gallery/e2.png", alt: "Event Kalih", category: "Event", span: "" },
-    { src: "/images-gallery/e3.png", alt: "Event Kalih", category: "Event", span: "" },
-    { src: "/images-gallery/e4.png", alt: "Event Kalih", category: "Event", span: "" },
+    { src: "/images-gallery/e1.webp", alt: "Event Kalih", category: "Event", span: "masonry-item-wide" },
+    { src: "/images-gallery/e2.webp", alt: "Event Kalih", category: "Event", span: "" },
+    { src: "/images-gallery/e3.webp", alt: "Event Kalih", category: "Event", span: "" },
+    { src: "/images-gallery/e4.webp", alt: "Event Kalih", category: "Event", span: "" },
   ];
 
 const INITIAL_COUNT = 6;
@@ -79,7 +79,7 @@ export default function Gallery() {
             </h2>
             <p className="text-secondary">Abadikan setiap momen berkesan Anda.</p>
           </div>
-          <div className="flex gap-4 overflow-x-auto -mx-gutter px-gutter md:mx-0 md:px-0 md:overflow-visible">
+          <div className="flex gap-4 overflow-x-auto no-scrollbar -mx-gutter px-gutter md:mx-0 md:px-0 md:overflow-visible">
             {CATEGORIES.map((category) => (
               <button
                 key={category}
