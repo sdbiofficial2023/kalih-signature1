@@ -27,14 +27,8 @@ export default function Footer() {
       <div className="px-gutter max-w-container-max mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
           <div className="md:col-span-2">
-            <div className="mb-6">
-              <Image
-                src="/logos-navbar/kalih-new.png"
-                alt="Kalih Signature"
-                width={128}
-                height={160}
-                className="h-20 md:h-24 w-auto"
-              />
+            <div className="font-display text-3xl font-bold tracking-tight mb-6">
+              Kalih Signature
             </div>
             <p className="text-white/70 max-w-sm leading-relaxed">
               Cafe keluarga di Tegal dengan signature coffee, hidangan favorit, working space, meeting room, rooftop, kids area, dan venue untuk berbagai acara.

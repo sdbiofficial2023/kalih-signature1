@@ -39,7 +39,7 @@ export default async function ArtikelDetailPage({ params }: Props) {
 
   return (
     <div className="pb-24">
-      <div className="pt-32 pb-10 px-gutter max-w-3xl mx-auto">
+      <div className="pt-24 sm:pt-32 pb-10 px-gutter max-w-3xl mx-auto">
         <Link
           href="/artikel"
           className="inline-flex items-center gap-1 text-xs font-bold uppercase tracking-widest text-primary mb-8"

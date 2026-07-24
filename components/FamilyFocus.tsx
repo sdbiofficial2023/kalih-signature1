@@ -25,7 +25,7 @@ export default function FamilyFocus() {
           <p className="text-secondary text-lg mb-8 leading-relaxed">
             Kalih Signature menghadirkan area outdoor yang rindang dengan pepohonan hijau, udara yang sejuk, dan suasana yang nyaman untuk bersantai, berkumpul, maupun menikmati waktu bersama keluarga.
           </p>
-          <div className="grid grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             <div className="flex items-start gap-4">
               <span className="material-symbols-outlined text-primary">check_circle</span>
               <div>

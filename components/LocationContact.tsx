@@ -50,7 +50,7 @@ export default function LocationContact() {
           </div>
           <div className="lg:col-span-8 rounded-3xl overflow-hidden shadow-2xl h-[400px] border-8 border-surface">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.5!2d109.1567!3d-6.8667!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6fb9e2d6e3b1e7%3A0x0!2sKalih+Signature!5e0!3m2!1sid!2sid!4v1700000000000!5m2!1sid!2sid"
+              src="https://www.google.com/maps?q=Kalih+Signature+Coffee+and+Eatery+Tegal&ll=-6.8887307,109.1503639&z=17&output=embed"
               width="100%"
               height="100%"
               style={{ border: 0 }}

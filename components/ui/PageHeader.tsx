@@ -10,7 +10,7 @@ type PageHeaderProps = {
 export default function PageHeader({ eyebrow, title, description, centered }: PageHeaderProps) {
   return (
     <div
-      className={`pt-32 pb-16 px-gutter max-w-container-max mx-auto ${centered ? "text-center" : ""}`}
+      className={`pt-24 sm:pt-32 pb-16 px-gutter max-w-container-max mx-auto ${centered ? "text-center" : ""}`}
     >
       <Eyebrow>{eyebrow}</Eyebrow>
       <h1

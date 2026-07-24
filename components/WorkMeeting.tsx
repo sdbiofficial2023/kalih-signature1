@@ -95,7 +95,7 @@ function WifiSignalIcon({ animate }: { animate: boolean }) {
   return (
     <svg
       viewBox="0 0 24 24"
-      className="w-8 h-8 text-primary"
+      className="w-6 h-6 text-primary"
       aria-hidden="true"
     >
       {bars}
@@ -164,11 +164,11 @@ export default function WorkMeeting() {
             </div>
             <div
               ref={badgeRef}
-              className="absolute -bottom-4 -right-4 bg-white text-primary p-5 rounded-xl shadow-xl hidden md:flex flex-col items-center gap-1"
+              className="absolute -bottom-3 -right-3 bg-white text-primary p-3 rounded-xl shadow-xl hidden md:flex flex-col items-center gap-0.5"
             >
               <WifiSignalIcon animate={isVisible} />
-              <p className="text-2xl font-bold mb-0 tabular-nums">{count} Mbps</p>
-              <p className="text-xs font-bold uppercase tracking-widest opacity-60">
+              <p className="text-lg font-bold mb-0 tabular-nums">{count} Mbps</p>
+              <p className="text-[10px] font-bold uppercase tracking-widest opacity-60">
                 Dedicated Connection
               </p>
             </div>

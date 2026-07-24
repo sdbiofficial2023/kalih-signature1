@@ -10,7 +10,7 @@ type PageHeroProps = {
 
 export default function PageHero({ image, eyebrow, title, description, children }: PageHeroProps) {
   return (
-    <header className="relative min-h-[70vh] flex items-center pt-28 pb-16 sm:pt-24 sm:pb-10">
+    <header className="relative min-h-[70vh] flex items-center pt-20 pb-16 sm:pt-24 sm:pb-10">
       <div className="absolute inset-0 z-0 overflow-hidden">
         <Image src={image.src} alt={image.alt} fill priority sizes="100vw" className="object-cover" />
         <div className="absolute inset-0 hero-gradient" />

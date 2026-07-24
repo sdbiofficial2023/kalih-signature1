@@ -72,14 +72,14 @@ export default function Gallery() {
   return (
     <section id="gallery" data-reveal className="py-24 bg-white">
       <div className="px-gutter max-w-container-max mx-auto">
-        <div className="flex justify-between items-end mb-16">
+        <div className="flex flex-col md:flex-row md:justify-between md:items-end gap-6 mb-10 md:mb-16">
           <div>
-            <h2 className="font-display text-4xl font-bold text-primary mb-4 tracking-tight">
+            <h2 className="font-display text-3xl sm:text-4xl font-bold text-primary mb-4 tracking-tight">
               Sudut Kalih
             </h2>
             <p className="text-secondary">Abadikan setiap momen berkesan Anda.</p>
           </div>
-          <div className="hidden md:flex gap-4">
+          <div className="flex gap-4 overflow-x-auto -mx-gutter px-gutter md:mx-0 md:px-0 md:overflow-visible">
             {CATEGORIES.map((category) => (
               <button
                 key={category}
@@ -88,7 +88,7 @@ export default function Gallery() {
                   setActiveCategory(category);
                   setShowAll(false);
                 }}
-                className={`text-sm font-bold pb-1 transition-colors ${activeCategory === category
+                className={`text-sm font-bold pb-1 whitespace-nowrap shrink-0 transition-colors ${activeCategory === category
                   ? "text-primary border-b-2 border-primary"
                   : "text-secondary hover:text-primary"
                   }`}
