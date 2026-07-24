@@ -156,7 +156,7 @@ export default function WorkMeeting() {
             <div className="relative aspect-[4/3] w-full rounded-3xl overflow-hidden shadow-2xl">
               <Image
                 src="/images-workmeeting/pusat-produktivitas.webp"
-                alt=""
+                alt="Meeting room dan working space Kalih Signature dengan koneksi WiFi cepat"
                 fill
                 sizes="(min-width: 1024px) 50vw, 100vw"
                 className="object-cover"

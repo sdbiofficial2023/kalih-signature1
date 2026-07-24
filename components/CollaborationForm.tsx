@@ -77,23 +77,33 @@ export default function CollaborationForm() {
                 </div>
               ) : (
                 <form className="space-y-4 sm:space-y-6" onSubmit={handleSubmit}>
-                  <input
-                    required
-                    name="name"
-                    type="text"
-                    placeholder="Nama Lengkap / Instansi"
-                    className="w-full px-4 py-3.5 sm:px-6 sm:py-4 rounded-lg border border-black/10 bg-surface focus:border-primary focus:ring-1 focus:ring-primary/20 transition-all outline-none"
-                  />
-                  <input
-                    required
-                    name="email"
-                    type="email"
-                    placeholder="Email"
-                    className="w-full px-4 py-3.5 sm:px-6 sm:py-4 rounded-lg border border-black/10 bg-surface focus:border-primary focus:ring-1 focus:ring-primary/20 transition-all outline-none"
-                  />
+                  <div>
+                    <label htmlFor="collab-name" className="sr-only">Nama Lengkap / Instansi</label>
+                    <input
+                      required
+                      id="collab-name"
+                      name="name"
+                      type="text"
+                      placeholder="Nama Lengkap / Instansi"
+                      className="w-full px-4 py-3.5 sm:px-6 sm:py-4 rounded-lg border border-black/10 bg-surface focus:border-primary focus:ring-1 focus:ring-primary/20 transition-all outline-none"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="collab-email" className="sr-only">Email</label>
+                    <input
+                      required
+                      id="collab-email"
+                      name="email"
+                      type="email"
+                      placeholder="Email"
+                      className="w-full px-4 py-3.5 sm:px-6 sm:py-4 rounded-lg border border-black/10 bg-surface focus:border-primary focus:ring-1 focus:ring-primary/20 transition-all outline-none"
+                    />
+                  </div>
                   <div className="relative">
+                    <label htmlFor="collab-interest" className="sr-only">Minat Kolaborasi</label>
                     <select
                       required
+                      id="collab-interest"
                       name="interest"
                       defaultValue=""
                       className="w-full px-4 py-3.5 sm:px-6 sm:py-4 pr-11 sm:pr-12 rounded-lg border border-black/10 bg-surface focus:border-primary focus:ring-1 focus:ring-primary/20 transition-all outline-none appearance-none"
@@ -111,13 +121,17 @@ export default function CollaborationForm() {
                       expand_more
                     </span>
                   </div>
-                  <textarea
-                    required
-                    name="message"
-                    rows={4}
-                    placeholder="Ceritakan detail event atau ide kolaborasi Anda..."
-                    className="w-full px-4 py-3.5 sm:px-6 sm:py-4 rounded-lg border border-black/10 bg-surface focus:border-primary focus:ring-1 focus:ring-primary/20 transition-all outline-none"
-                  />
+                  <div>
+                    <label htmlFor="collab-message" className="sr-only">Detail Kolaborasi</label>
+                    <textarea
+                      required
+                      id="collab-message"
+                      name="message"
+                      rows={4}
+                      placeholder="Ceritakan detail event atau ide kolaborasi Anda..."
+                      className="w-full px-4 py-3.5 sm:px-6 sm:py-4 rounded-lg border border-black/10 bg-surface focus:border-primary focus:ring-1 focus:ring-primary/20 transition-all outline-none"
+                    />
+                  </div>
                   <button
                     type="submit"
                     className="w-full bg-primary text-white font-bold py-4 sm:py-5 rounded-lg hover:shadow-xl hover:scale-[1.02] transition-all active:scale-95 shadow-lg shadow-primary/20"

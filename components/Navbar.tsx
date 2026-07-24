@@ -4,15 +4,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { WHATSAPP_RESERVATION_URL } from "@/lib/constants";
-
-const NAV_LINKS = [
-  { href: "/", label: "Home" },
-  { href: "/menu", label: "Menu" },
-  { href: "/event", label: "Event" },
-  { href: "/artikel", label: "Artikel" },
-  { href: "/contact-us", label: "Contact Us" },
-];
+import { NAV_LINKS, WHATSAPP_RESERVATION_URL } from "@/lib/constants";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);

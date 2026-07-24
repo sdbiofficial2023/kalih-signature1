@@ -87,11 +87,16 @@ export default function FAQ() {
                     expand_more
                   </span>
                 </button>
-                {isOpen && (
-                  <div className="px-8 pb-6 text-secondary leading-relaxed text-sm">
-                    {item.answer}
+                <div
+                  className={`grid transition-all duration-300 ease-in-out ${isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+                    }`}
+                >
+                  <div className="overflow-hidden">
+                    <div className="px-8 pb-6 text-secondary leading-relaxed text-sm">
+                      {item.answer}
+                    </div>
                   </div>
-                )}
+                </div>
               </div>
             );
           })}

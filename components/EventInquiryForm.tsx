@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { BUSINESS_ADDRESS, BUSINESS_ADDRESS_LINE_2 } from "@/lib/constants";
+import { BUSINESS_ADDRESS, BUSINESS_ADDRESS_LINE_2, WHATSAPP_NUMBER_INTL } from "@/lib/constants";
 
 const EVENT_TYPES = [
   "Corporate Meeting",
@@ -12,16 +12,35 @@ const EVENT_TYPES = [
   "Lainnya",
 ];
 
-/**
- * Submit is a stub: it only confirms the form was filled in correctly.
- * No data is sent anywhere yet — wiring this to an API route / CRM / email
- * is a follow-up task (see PRD.md, "Backlog").
- */
 export default function EventInquiryForm() {
   const [status, setStatus] = useState<"idle" | "submitted">("idle");
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    const formData = new FormData(event.currentTarget);
+
+    const name = formData.get("name") as string;
+    const email = formData.get("email") as string;
+    const eventType = formData.get("eventType") as string;
+    const date = formData.get("date") as string;
+    const details = formData.get("details") as string;
+
+    const waText = [
+      `Halo Kalih Signature! 👋`,
+      ``,
+      `Saya ingin mengajukan inquiry event:`,
+      ``,
+      `*Nama:* ${name}`,
+      `*Email:* ${email}`,
+      `*Jenis Event:* ${eventType}`,
+      `*Tanggal:* ${date}`,
+      ``,
+      `*Detail:*`,
+      details,
+    ].join("\n");
+
+    const waUrl = `https://wa.me/${WHATSAPP_NUMBER_INTL}?text=${encodeURIComponent(waText)}`;
+    window.open(waUrl, "_blank", "noopener,noreferrer");
     setStatus("submitted");
   };
 
@@ -77,25 +96,35 @@ export default function EventInquiryForm() {
           ) : (
             <form className="space-y-6" onSubmit={handleSubmit}>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <input
-                  required
-                  name="name"
-                  type="text"
-                  placeholder="Nama Lengkap"
-                  className="w-full px-6 py-4 rounded-lg border border-black/10 bg-white focus:border-primary focus:ring-1 focus:ring-primary/20 transition-all outline-none"
-                />
-                <input
-                  required
-                  name="email"
-                  type="email"
-                  placeholder="Email"
-                  className="w-full px-6 py-4 rounded-lg border border-black/10 bg-white focus:border-primary focus:ring-1 focus:ring-primary/20 transition-all outline-none"
-                />
+                <div>
+                  <label htmlFor="event-name" className="sr-only">Nama Lengkap</label>
+                  <input
+                    required
+                    id="event-name"
+                    name="name"
+                    type="text"
+                    placeholder="Nama Lengkap"
+                    className="w-full px-6 py-4 rounded-lg border border-black/10 bg-white focus:border-primary focus:ring-1 focus:ring-primary/20 transition-all outline-none"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="event-email" className="sr-only">Email</label>
+                  <input
+                    required
+                    id="event-email"
+                    name="email"
+                    type="email"
+                    placeholder="Email"
+                    className="w-full px-6 py-4 rounded-lg border border-black/10 bg-white focus:border-primary focus:ring-1 focus:ring-primary/20 transition-all outline-none"
+                  />
+                </div>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div className="relative">
+                  <label htmlFor="event-type" className="sr-only">Jenis Event</label>
                   <select
                     required
+                    id="event-type"
                     name="eventType"
                     defaultValue=""
                     className="w-full px-6 py-4 rounded-lg border border-black/10 bg-white focus:border-primary focus:ring-1 focus:ring-primary/20 transition-all outline-none appearance-none"
@@ -113,20 +142,28 @@ export default function EventInquiryForm() {
                     expand_more
                   </span>
                 </div>
-                <input
+                <div>
+                  <label htmlFor="event-date" className="sr-only">Tanggal Event</label>
+                  <input
+                    required
+                    id="event-date"
+                    name="date"
+                    type="date"
+                    className="w-full px-6 py-4 rounded-lg border border-black/10 bg-white focus:border-primary focus:ring-1 focus:ring-primary/20 transition-all outline-none"
+                  />
+                </div>
+              </div>
+              <div>
+                <label htmlFor="event-details" className="sr-only">Detail Event</label>
+                <textarea
                   required
-                  name="date"
-                  type="date"
+                  id="event-details"
+                  name="details"
+                  rows={4}
+                  placeholder="Ceritakan suasana yang ingin Anda ciptakan..."
                   className="w-full px-6 py-4 rounded-lg border border-black/10 bg-white focus:border-primary focus:ring-1 focus:ring-primary/20 transition-all outline-none"
                 />
               </div>
-              <textarea
-                required
-                name="details"
-                rows={4}
-                placeholder="Ceritakan suasana yang ingin Anda ciptakan..."
-                className="w-full px-6 py-4 rounded-lg border border-black/10 bg-white focus:border-primary focus:ring-1 focus:ring-primary/20 transition-all outline-none"
-              />
               <button
                 type="submit"
                 className="w-full bg-primary text-white font-bold py-5 rounded-lg hover:shadow-xl hover:scale-[1.02] transition-all active:scale-95 shadow-lg shadow-primary/20"

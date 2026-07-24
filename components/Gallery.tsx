@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { STOCK_IMAGES } from "@/lib/stock-images";
 
 const CATEGORIES = ["Semua", "Ambience", "Coffee & Non Coffee", "Food", "Event"] as const;
 type Category = (typeof CATEGORIES)[number];
@@ -14,42 +13,42 @@ const PHOTOS: {
   span: string;
 }[] = [
     // Ambience
-    { src: "/images-gallery/a1.webp", alt: "Ambience Kalih", category: "Ambience", span: "masonry-item-tall" },
-    { src: "/images-gallery/a1.2.webp", alt: "Ambience Kalih", category: "Ambience", span: "" },
-    { src: "/images-gallery/a1.3.webp", alt: "Ambience Kalih", category: "Ambience", span: "" },
-    { src: "/images-gallery/a1.4.webp", alt: "Ambience Kalih", category: "Ambience", span: "masonry-item-wide" },
-    { src: "/images-gallery/a.2.webp", alt: "Ambience Kalih", category: "Ambience", span: "" },
-    { src: "/images-gallery/a.2.2.webp", alt: "Ambience Kalih", category: "Ambience", span: "" },
-    { src: "/images-gallery/a3.webp", alt: "Ambience Kalih", category: "Ambience", span: "masonry-item-tall" },
-    { src: "/images-gallery/a3.3.webp", alt: "Ambience Kalih", category: "Ambience", span: "" },
-    { src: "/images-gallery/a4.webp", alt: "Ambience Kalih", category: "Ambience", span: "" },
-    { src: "/images-gallery/a4.4.webp", alt: "Ambience Kalih", category: "Ambience", span: "masonry-item-wide" },
-    { src: "/images-gallery/a4.5.webp", alt: "Ambience Kalih", category: "Ambience", span: "" },
+    { src: "/images-gallery/a1.webp", alt: "Suasana area duduk utama Kalih Signature", category: "Ambience", span: "masonry-item-tall" },
+    { src: "/images-gallery/a1.2.webp", alt: "Sudut interior Kalih Signature dengan pencahayaan hangat", category: "Ambience", span: "" },
+    { src: "/images-gallery/a1.3.webp", alt: "Area lounge Kalih Signature", category: "Ambience", span: "" },
+    { src: "/images-gallery/a1.4.webp", alt: "Tampilan panorama ruang utama Kalih Signature", category: "Ambience", span: "masonry-item-wide" },
+    { src: "/images-gallery/a.2.webp", alt: "Area outdoor Kalih Signature", category: "Ambience", span: "" },
+    { src: "/images-gallery/a.2.2.webp", alt: "Detail dekorasi interior Kalih Signature", category: "Ambience", span: "" },
+    { src: "/images-gallery/a3.webp", alt: "Rooftop Kalih Signature saat sore hari", category: "Ambience", span: "masonry-item-tall" },
+    { src: "/images-gallery/a3.3.webp", alt: "Area rooftop Kalih Signature", category: "Ambience", span: "" },
+    { src: "/images-gallery/a4.webp", alt: "Kids area Kalih Signature", category: "Ambience", span: "" },
+    { src: "/images-gallery/a4.4.webp", alt: "Suasana working space Kalih Signature", category: "Ambience", span: "masonry-item-wide" },
+    { src: "/images-gallery/a4.5.webp", alt: "Meeting room Kalih Signature", category: "Ambience", span: "" },
     // Coffee
-    { src: "/images-gallery/c1.webp", alt: "Coffee Kalih", category: "Coffee & Non Coffee", span: "" },
-    { src: "/images-gallery/c1.1.webp", alt: "Coffee Kalih", category: "Coffee & Non Coffee", span: "masonry-item-tall" },
-    { src: "/images-gallery/c2.webp", alt: "Coffee Kalih", category: "Coffee & Non Coffee", span: "masonry-item-wide" },
-    { src: "/images-gallery/c3.webp", alt: "Coffee Kalih", category: "Coffee & Non Coffee", span: "" },
-    { src: "/images-gallery/c4.1.webp", alt: "Coffee Kalih", category: "Coffee & Non Coffee", span: "" },
-    { src: "/images-gallery/c4.2.webp", alt: "Coffee Kalih", category: "Coffee & Non Coffee", span: "" },
-    { src: "/images-gallery/c4..4.webp", alt: "Coffee Kalih", category: "Coffee & Non Coffee", span: "masonry-item-tall" },
-    { src: "/images-gallery/c5.webp", alt: "Coffee Kalih", category: "Coffee & Non Coffee", span: "" },
-    { src: "/images-gallery/c5.5.webp", alt: "Coffee Kalih", category: "Coffee & Non Coffee", span: "" },
+    { src: "/images-gallery/c1.webp", alt: "Signature coffee Kalih Signature", category: "Coffee & Non Coffee", span: "" },
+    { src: "/images-gallery/c1.1.webp", alt: "Proses manual brew di Kalih Signature", category: "Coffee & Non Coffee", span: "masonry-item-tall" },
+    { src: "/images-gallery/c2.webp", alt: "Menu kopi susu khas Kalih Signature", category: "Coffee & Non Coffee", span: "masonry-item-wide" },
+    { src: "/images-gallery/c3.webp", alt: "Es kopi Kalih Signature", category: "Coffee & Non Coffee", span: "" },
+    { src: "/images-gallery/c4.1.webp", alt: "Minuman non-coffee Kalih Signature", category: "Coffee & Non Coffee", span: "" },
+    { src: "/images-gallery/c4.2.webp", alt: "Latte art Kalih Signature", category: "Coffee & Non Coffee", span: "" },
+    { src: "/images-gallery/c4..4.webp", alt: "Kopi hitam Kalih Signature", category: "Coffee & Non Coffee", span: "masonry-item-tall" },
+    { src: "/images-gallery/c5.webp", alt: "Racikan minuman signature Kalih Signature", category: "Coffee & Non Coffee", span: "" },
+    { src: "/images-gallery/c5.5.webp", alt: "Minuman segar khas Kalih Signature", category: "Coffee & Non Coffee", span: "" },
     // Food
-    { src: "/images-gallery/f1.webp", alt: "Food Kalih", category: "Food", span: "masonry-item-tall" },
-    { src: "/images-gallery/f1.1.webp", alt: "Food Kalih", category: "Food", span: "" },
-    { src: "/images-gallery/f2.webp", alt: "Food Kalih", category: "Food", span: "masonry-item-wide" },
-    { src: "/images-gallery/f2.2.webp", alt: "Food Kalih", category: "Food", span: "" },
-    { src: "/images-gallery/f3.1.webp", alt: "Food Kalih", category: "Food", span: "" },
-    { src: "/images-gallery/f3.2.webp", alt: "Food Kalih", category: "Food", span: "" },
-    { src: "/images-gallery/f4.webp", alt: "Food Kalih", category: "Food", span: "masonry-item-tall" },
-    { src: "/images-gallery/f5.webp", alt: "Food Kalih", category: "Food", span: "" },
-    { src: "/images-gallery/f5.1.webp", alt: "Food Kalih", category: "Food", span: "" },
+    { src: "/images-gallery/f1.webp", alt: "Hidangan favorit Kalih Signature", category: "Food", span: "masonry-item-tall" },
+    { src: "/images-gallery/f1.1.webp", alt: "Menu makanan utama Kalih Signature", category: "Food", span: "" },
+    { src: "/images-gallery/f2.webp", alt: "Sajian pasta di Kalih Signature", category: "Food", span: "masonry-item-wide" },
+    { src: "/images-gallery/f2.2.webp", alt: "Menu snack Kalih Signature", category: "Food", span: "" },
+    { src: "/images-gallery/f3.1.webp", alt: "Hidangan pembuka Kalih Signature", category: "Food", span: "" },
+    { src: "/images-gallery/f3.2.webp", alt: "Menu dessert Kalih Signature", category: "Food", span: "" },
+    { src: "/images-gallery/f4.webp", alt: "Hidangan berat khas Kalih Signature", category: "Food", span: "masonry-item-tall" },
+    { src: "/images-gallery/f5.webp", alt: "Menu sarapan Kalih Signature", category: "Food", span: "" },
+    { src: "/images-gallery/f5.1.webp", alt: "Sajian favorit pelanggan Kalih Signature", category: "Food", span: "" },
     // Event (placeholder - ganti nanti)
-    { src: "/images-gallery/e1.webp", alt: "Event Kalih", category: "Event", span: "masonry-item-wide" },
-    { src: "/images-gallery/e2.webp", alt: "Event Kalih", category: "Event", span: "" },
-    { src: "/images-gallery/e3.webp", alt: "Event Kalih", category: "Event", span: "" },
-    { src: "/images-gallery/e4.webp", alt: "Event Kalih", category: "Event", span: "" },
+    { src: "/images-gallery/e1.webp", alt: "Suasana acara komunitas di Kalih Signature", category: "Event", span: "masonry-item-wide" },
+    { src: "/images-gallery/e2.webp", alt: "Kegiatan corporate event di Kalih Signature", category: "Event", span: "" },
+    { src: "/images-gallery/e3.webp", alt: "Gathering tamu di Kalih Signature", category: "Event", span: "" },
+    { src: "/images-gallery/e4.webp", alt: "Momen perayaan di Kalih Signature", category: "Event", span: "" },
   ];
 
 const INITIAL_COUNT = 6;
@@ -88,6 +87,8 @@ export default function Gallery() {
                   setActiveCategory(category);
                   setShowAll(false);
                 }}
+                aria-pressed={activeCategory === category}
+                aria-label={`Filter galeri: ${category}`}
                 className={`text-sm font-bold pb-1 whitespace-nowrap shrink-0 transition-colors ${activeCategory === category
                   ? "text-primary border-b-2 border-primary"
                   : "text-secondary hover:text-primary"
@@ -120,6 +121,7 @@ export default function Gallery() {
             <button
               type="button"
               onClick={() => setShowAll(true)}
+              aria-label={`Lihat semua foto kategori ${activeCategory}`}
               className="inline-flex items-center gap-2 px-8 py-3 rounded-full border-2 border-primary text-primary font-bold text-sm tracking-wide hover:bg-primary hover:text-on-primary transition-all duration-300 cursor-pointer"
             >
               Lihat Selengkapnya

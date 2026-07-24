@@ -1,17 +1,33 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
+import { WHATSAPP_NUMBER_INTL } from "@/lib/constants";
 
-/**
- * Submit is a stub: it only confirms the form was filled in correctly.
- * No data is sent anywhere yet — wiring this to an API route / CRM / email
- * is a follow-up task (see PRD.md, "Backlog").
- */
 export default function ContactFormSection() {
   const [status, setStatus] = useState<"idle" | "submitted">("idle");
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    const formData = new FormData(event.currentTarget);
+
+    const name = formData.get("name") as string;
+    const email = formData.get("email") as string;
+    const subject = formData.get("subject") as string;
+    const message = formData.get("message") as string;
+
+    const waText = [
+      `Halo Kalih Signature! 👋`,
+      ``,
+      `*Nama:* ${name}`,
+      `*Email:* ${email}`,
+      `*Subjek:* ${subject}`,
+      ``,
+      `*Pesan:*`,
+      message,
+    ].join("\n");
+
+    const waUrl = `https://wa.me/${WHATSAPP_NUMBER_INTL}?text=${encodeURIComponent(waText)}`;
+    window.open(waUrl, "_blank", "noopener,noreferrer");
     setStatus("submitted");
   };
 
@@ -32,35 +48,51 @@ export default function ContactFormSection() {
           ) : (
             <form className="space-y-6" onSubmit={handleSubmit}>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div>
+                  <label htmlFor="contact-name" className="sr-only">Nama Lengkap</label>
+                  <input
+                    required
+                    id="contact-name"
+                    name="name"
+                    type="text"
+                    placeholder="Nama Lengkap"
+                    className="w-full px-6 py-4 rounded-lg border border-black/10 bg-surface focus:border-primary focus:ring-1 focus:ring-primary/20 transition-all outline-none"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="contact-email" className="sr-only">Email</label>
+                  <input
+                    required
+                    id="contact-email"
+                    name="email"
+                    type="email"
+                    placeholder="Email"
+                    className="w-full px-6 py-4 rounded-lg border border-black/10 bg-surface focus:border-primary focus:ring-1 focus:ring-primary/20 transition-all outline-none"
+                  />
+                </div>
+              </div>
+              <div>
+                <label htmlFor="contact-subject" className="sr-only">Subjek</label>
                 <input
                   required
-                  name="name"
+                  id="contact-subject"
+                  name="subject"
                   type="text"
-                  placeholder="Nama Lengkap"
-                  className="w-full px-6 py-4 rounded-lg border border-black/10 bg-surface focus:border-primary focus:ring-1 focus:ring-primary/20 transition-all outline-none"
-                />
-                <input
-                  required
-                  name="email"
-                  type="email"
-                  placeholder="Email"
+                  placeholder="Subjek"
                   className="w-full px-6 py-4 rounded-lg border border-black/10 bg-surface focus:border-primary focus:ring-1 focus:ring-primary/20 transition-all outline-none"
                 />
               </div>
-              <input
-                required
-                name="subject"
-                type="text"
-                placeholder="Subjek"
-                className="w-full px-6 py-4 rounded-lg border border-black/10 bg-surface focus:border-primary focus:ring-1 focus:ring-primary/20 transition-all outline-none"
-              />
-              <textarea
-                required
-                name="message"
-                rows={5}
-                placeholder="Tulis pesan Anda..."
-                className="w-full px-6 py-4 rounded-lg border border-black/10 bg-surface focus:border-primary focus:ring-1 focus:ring-primary/20 transition-all outline-none"
-              />
+              <div>
+                <label htmlFor="contact-message" className="sr-only">Pesan</label>
+                <textarea
+                  required
+                  id="contact-message"
+                  name="message"
+                  rows={5}
+                  placeholder="Tulis pesan Anda..."
+                  className="w-full px-6 py-4 rounded-lg border border-black/10 bg-surface focus:border-primary focus:ring-1 focus:ring-primary/20 transition-all outline-none"
+                />
+              </div>
               <button
                 type="submit"
                 className="w-full bg-primary text-white font-bold py-5 rounded-lg hover:shadow-xl hover:scale-[1.02] transition-all active:scale-95 shadow-lg shadow-primary/20"

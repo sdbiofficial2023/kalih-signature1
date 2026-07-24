@@ -1,6 +1,37 @@
-import { STOCK_IMAGES } from "@/lib/stock-images";
+/**
+ * One-off script: pushes the 5 legacy hardcoded articles (previously in
+ * lib/articles.ts) into Sanity, so /artikel isn't empty right after cutover.
+ *
+ * Requires a write-scoped SANITY_API_TOKEN in .env.local (Sanity dashboard ->
+ * API -> Tokens -> Add API token -> Editor permission). Safe to run more than
+ * once: it skips any article whose slug already exists in the dataset.
+ *
+ * Run with: pnpm exec tsx scripts/migrate-articles.ts
+ */
+import { config } from "dotenv";
+import { createClient } from "@sanity/client";
 
-export type Article = {
+config({ path: ".env.local" });
+
+const token = process.env.SANITY_API_TOKEN;
+const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID;
+const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET ?? "production";
+const apiVersion = process.env.NEXT_PUBLIC_SANITY_API_VERSION ?? "2025-01-01";
+
+if (!token || !projectId) {
+  console.error("Missing SANITY_API_TOKEN or NEXT_PUBLIC_SANITY_PROJECT_ID in .env.local. See scripts/migrate-articles.ts header.");
+  process.exit(1);
+}
+
+const client = createClient({
+  projectId,
+  dataset,
+  apiVersion,
+  token,
+  useCdn: false,
+});
+
+type LegacyArticle = {
   slug: string;
   topic: string;
   title: string;
@@ -10,14 +41,17 @@ export type Article = {
   featured?: boolean;
 };
 
-export const ARTICLES: Article[] = [
+const LEGACY_ARTICLES: LegacyArticle[] = [
   {
     slug: "arsitektur-yang-bernapas",
     topic: "Architecture",
     title: "Menemukan Harmoni: Arsitektur yang Bernapas di Kalih Signature",
     excerpt:
       "Bagaimana desain kontemporer berpadu dengan lanskap tropis untuk menciptakan ruang yang mendukung restorasi mental dan produktivitas.",
-    image: STOCK_IMAGES.galleryArsitektur1,
+    image: {
+      src: "https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?w=1200&q=80&auto=format&fit=crop",
+      alt: "Interior cafe rindang dengan banyak tanaman",
+    },
     featured: true,
     content: [
       "Sejak awal perancangan, Kalih Signature dibangun dengan satu pertanyaan sederhana: bagaimana sebuah ruang bisa membuat penggunanya bernapas lebih lega? Jawabannya ada pada perpaduan antara garis-garis arsitektur kontemporer dan lanskap tropis yang dibiarkan tumbuh secara alami di sekeliling bangunan.",
@@ -31,7 +65,10 @@ export const ARTICLES: Article[] = [
     topic: "Coffee Culture",
     title: "Seni Manual Brew: Lebih dari Sekadar Kafein",
     excerpt: "Menelusuri perjalanan biji kopi pilihan dari petani lokal hingga ke meja Anda.",
-    image: STOCK_IMAGES.articleCoffee,
+    image: {
+      src: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1200&q=80&auto=format&fit=crop",
+      alt: "Proses manual brew kopi",
+    },
     content: [
       "Setiap cangkir kopi yang disajikan di Kalih Signature membawa cerita panjang — dimulai dari kebun kopi milik petani lokal di dataran tinggi, melewati proses sortir dan sangrai yang cermat, hingga akhirnya diseduh satu per satu di depan mata Anda.",
       "Manual brew dipilih sebagai metode andalan karena memberi kontrol penuh atas rasio air, suhu, dan waktu seduh — tiga variabel yang menentukan karakter rasa sebuah biji kopi. Barista kami dilatih untuk mengenali profil rasa tiap batch, sehingga metode seduh disesuaikan agar potensi terbaik biji kopi benar-benar keluar.",
@@ -44,7 +81,10 @@ export const ARTICLES: Article[] = [
     topic: "Family Bonding",
     title: "Akhir Pekan yang Berarti: Menciptakan Kenangan Keluarga",
     excerpt: "Tips merencanakan quality time yang bermakna di tengah kesibukan harian.",
-    image: STOCK_IMAGES.articleFamily,
+    image: {
+      src: "https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?w=1200&q=80&auto=format&fit=crop",
+      alt: "Anak-anak bermain riang di area hijau",
+    },
     content: [
       "Di tengah jadwal yang padat, akhir pekan sering kali menjadi satu-satunya waktu keluarga bisa benar-benar berkumpul. Tantangannya adalah memastikan waktu tersebut terasa bermakna, bukan sekadar berada di tempat yang sama sambil masing-masing sibuk dengan gawai.",
       "Pilih aktivitas yang melibatkan interaksi langsung, seperti bermain di area outdoor, mencoba menu baru bersama, atau sekadar duduk santai sambil bercerita tanpa distraksi. Ruang terbuka yang nyaman dan area bermain anak di Kalih Signature dirancang agar orang tua tetap bisa bersantai sementara anak-anak leluasa bereksplorasi.",
@@ -57,7 +97,10 @@ export const ARTICLES: Article[] = [
     topic: "Productivity",
     title: "Deep Work di Ruang Terbuka: Mengapa Alam Memacu Kreativitas",
     excerpt: "Eksplorasi tentang bagaimana elemen biofilik di Kalih meningkatkan fokus Anda.",
-    image: STOCK_IMAGES.articleCoworking,
+    image: {
+      src: "https://images.unsplash.com/photo-1517502884422-41eaead166d4?w=1200&q=80&auto=format&fit=crop",
+      alt: "Area coworking terbuka dengan tanaman",
+    },
     content: [
       "Konsep deep work menuntut lingkungan yang minim distraksi namun tetap merangsang pikiran. Menariknya, riset di bidang psikologi lingkungan menunjukkan bahwa paparan elemen alam — tanaman, cahaya alami, sirkulasi udara segar — justru dapat meningkatkan kapasitas fokus dibanding ruang kerja tertutup yang serba steril.",
       "Fenomena ini dikenal sebagai desain biofilik: mengintegrasikan unsur alam ke dalam ruang buatan manusia. Di Kalih Signature, prinsip ini diterapkan melalui area kerja yang dikelilingi tanaman rindang, meja-meja dengan akses pandangan ke taman, serta ventilasi alami yang mengurangi kelelahan mata dan pikiran akibat duduk terlalu lama di ruang ber-AC penuh.",
@@ -70,7 +113,10 @@ export const ARTICLES: Article[] = [
     topic: "Events & Planning",
     title: "Panduan Merancang Intimate Gathering yang Tak Terlupakan",
     excerpt: "Dari pemilihan menu hingga dekorasi: memastikan tamu Anda merasa istimewa.",
-    image: STOCK_IMAGES.articleEventPlanning,
+    image: {
+      src: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&q=80&auto=format&fit=crop",
+      alt: "Meja makan tertata untuk acara intim",
+    },
     content: [
       "Intimate gathering menuntut perhatian pada detail yang berbeda dari acara besar. Dengan jumlah tamu yang lebih terbatas, setiap elemen — dari tata letak meja hingga pemilihan menu — punya ruang untuk terasa lebih personal dan disesuaikan dengan karakter acara.",
       "Mulailah dari menentukan suasana yang ingin dibangun: hangat dan santai, elegan dan minimalis, atau ceria dan penuh warna. Suasana ini akan menjadi acuan untuk memilih dekorasi, pencahayaan, hingga susunan menu yang disajikan.",
@@ -80,6 +126,55 @@ export const ARTICLES: Article[] = [
   },
 ];
 
-export function getArticleBySlug(slug: string): Article | undefined {
-  return ARTICLES.find((article) => article.slug === slug);
+function toPortableText(paragraphs: string[]) {
+  return paragraphs.map((text) => ({
+    _type: "block",
+    style: "normal",
+    children: [{ _type: "span", text }],
+  }));
 }
+
+async function uploadImage(url: string) {
+  const res = await fetch(url);
+  if (!res.ok) throw new Error(`Failed to fetch image ${url}: ${res.status}`);
+  const buffer = Buffer.from(await res.arrayBuffer());
+  return client.assets.upload("image", buffer, { filename: url.split("/").pop() });
+}
+
+async function migrate() {
+  for (const legacy of LEGACY_ARTICLES) {
+    const existing = await client.fetch(`*[_type == "article" && slug.current == $slug][0]._id`, {
+      slug: legacy.slug,
+    });
+    if (existing) {
+      console.log(`Skip (already exists): ${legacy.slug}`);
+      continue;
+    }
+
+    console.log(`Uploading image for: ${legacy.slug}`);
+    const asset = await uploadImage(legacy.image.src);
+
+    console.log(`Creating article: ${legacy.slug}`);
+    await client.create({
+      _type: "article",
+      title: legacy.title,
+      slug: { _type: "slug", current: legacy.slug },
+      topic: legacy.topic,
+      excerpt: legacy.excerpt,
+      coverImage: {
+        _type: "image",
+        asset: { _type: "reference", _ref: asset._id },
+        alt: legacy.image.alt,
+      },
+      content: toPortableText(legacy.content),
+      featured: legacy.featured ?? false,
+    });
+  }
+
+  console.log("Done.");
+}
+
+migrate().catch((err) => {
+  console.error(err);
+  process.exit(1);
+});

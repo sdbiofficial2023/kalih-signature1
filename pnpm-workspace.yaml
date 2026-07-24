@@ -1,5 +1,6 @@
 allowBuilds:
   canvas: true
+  esbuild: true
   sharp: false
   unrs-resolver: false
 ignoredBuiltDependencies:

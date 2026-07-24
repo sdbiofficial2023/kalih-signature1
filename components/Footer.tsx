@@ -4,17 +4,10 @@ import {
   BUSINESS_ADDRESS,
   BUSINESS_HOURS,
   GOOGLE_MAPS_URL,
+  NAV_LINKS,
   WHATSAPP_NUMBER_DISPLAY,
   WHATSAPP_RESERVATION_URL,
 } from "@/lib/constants";
-
-const NAV_LINKS = [
-  { href: "/", label: "Home" },
-  { href: "/menu", label: "Menu" },
-  { href: "/event", label: "Event" },
-  { href: "/artikel", label: "Artikel" },
-  { href: "/contact-us", label: "Contact Us" },
-];
 
 const SOCIAL_LINKS = [
   { href: WHATSAPP_RESERVATION_URL, icon: "chat", label: "WhatsApp" },
@@ -27,9 +20,13 @@ export default function Footer() {
       <div className="px-gutter max-w-container-max mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
           <div className="md:col-span-2">
-            <div className="font-display text-3xl font-bold tracking-tight mb-6">
-              Kalih Signature
-            </div>
+            <Image
+              src="/logos-navbar/kalih-new.webp"
+              alt="Kalih Signature"
+              width={300}
+              height={159}
+              className="h-12 w-auto mb-6"
+            />
             <p className="text-white/70 max-w-sm leading-relaxed">
               Cafe keluarga di Tegal dengan signature coffee, hidangan favorit, working space, meeting room, rooftop, kids area, dan venue untuk berbagai acara.
             </p>

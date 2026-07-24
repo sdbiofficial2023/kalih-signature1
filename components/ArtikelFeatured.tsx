@@ -1,10 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ARTICLES } from "@/lib/articles";
+import { getFeaturedArticle } from "@/lib/sanity/queries";
+import { urlFor } from "@/lib/sanity/image";
 
-const featuredArticle = ARTICLES.find((article) => article.featured) ?? ARTICLES[0];
+export default async function ArtikelFeatured() {
+  const featuredArticle = await getFeaturedArticle();
 
-export default function ArtikelFeatured() {
+  if (!featuredArticle) return null;
+
   return (
     <section data-reveal className="px-gutter max-w-container-max mx-auto mb-16">
       <Link
@@ -13,8 +16,8 @@ export default function ArtikelFeatured() {
       >
         <div className="md:col-span-8 relative aspect-video rounded-2xl overflow-hidden">
           <Image
-            src={featuredArticle.image.src}
-            alt={featuredArticle.image.alt}
+            src={urlFor(featuredArticle.coverImage).width(1200).height(675).url()}
+            alt={featuredArticle.coverImage.alt}
             fill
             sizes="(min-width: 768px) 66vw, 100vw"
             className="object-cover transition-transform duration-700 group-hover:scale-105"
