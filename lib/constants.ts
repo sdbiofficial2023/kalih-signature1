@@ -13,7 +13,7 @@ export const BUSINESS_ADDRESS_LINE_2 = "Kawasan Strategis, Indonesia";
 export const BUSINESS_HOURS = "Senin - Minggu: 08:00 - 23:00 WIB";
 export const GOOGLE_MAPS_URL = "https://maps.app.goo.gl/cZaSmnPYXkbUyh2J7";
 
-export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://kalihsignature.com";
+export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://kalihcoffee.com";
 
 export const NAV_LINKS = [
   { href: "/", label: "Home" },
