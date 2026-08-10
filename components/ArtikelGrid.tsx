@@ -35,13 +35,15 @@ export default async function ArtikelGrid({ page = 1 }: Props) {
   return (
     <section data-reveal id="artikel-grid" className="px-gutter max-w-container-max mx-auto">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
-        {gridArticles.map((article) => (
+        {gridArticles.map((article, index) => (
           <article key={article.slug} className="group h-full flex flex-col">
             <Link href={`/artikel/${article.slug}`} className="relative aspect-square rounded-xl overflow-hidden mb-4 block">
               <Image
                 src={urlFor(article.coverImage).width(600).height(600).url()}
                 alt={article.coverImage.alt}
                 fill
+                unoptimized
+                priority={index === 0}
                 sizes="(min-width: 1024px) 25vw, (min-width: 768px) 50vw, 100vw"
                 className="object-cover transition-transform duration-500 group-hover:scale-110"
               />

@@ -19,6 +19,8 @@ export default async function ArtikelFeatured() {
             src={urlFor(featuredArticle.coverImage).width(1200).height(675).url()}
             alt={featuredArticle.coverImage.alt}
             fill
+            unoptimized
+            priority
             sizes="(min-width: 768px) 66vw, 100vw"
             className="object-cover transition-transform duration-700 group-hover:scale-105"
           />

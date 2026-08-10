@@ -27,6 +27,7 @@ export default async function Articles() {
                   src={urlFor(article.coverImage).width(800).height(450).url()}
                   alt={article.coverImage.alt}
                   fill
+                  unoptimized
                   sizes="(min-width: 768px) 33vw, 100vw"
                   className="object-cover transition-transform duration-500 group-hover:scale-110"
                 />

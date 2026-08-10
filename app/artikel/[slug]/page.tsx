@@ -100,6 +100,7 @@ export default async function ArtikelDetailPage({ params }: Props) {
             src={urlFor(article.coverImage).width(1600).height(900).url()}
             alt={article.coverImage.alt}
             fill
+            unoptimized
             sizes="(min-width: 1024px) 1024px, 100vw"
             priority
             className="object-cover"
@@ -124,6 +125,7 @@ export default async function ArtikelDetailPage({ params }: Props) {
                     src={urlFor(item.coverImage).width(800).height(450).url()}
                     alt={item.coverImage.alt}
                     fill
+                    unoptimized
                     sizes="(min-width: 768px) 33vw, 100vw"
                     className="object-cover transition-transform duration-500 group-hover:scale-110"
                   />
