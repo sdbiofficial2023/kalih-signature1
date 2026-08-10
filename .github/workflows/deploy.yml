@@ -1,0 +1,64 @@
+name: Deploy to DomaiNesia
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Write .env.local
+        run: echo "${{ secrets.ENV_LOCAL }}" > .env.local
+
+      - name: Build
+        run: pnpm run build
+
+      - name: Package standalone output
+        run: |
+          cp -r public .next/standalone/public
+          mkdir -p .next/standalone/.next/static
+          cp -r .next/static/* .next/standalone/.next/static/
+          tar -czf deploy.tar.gz -C .next/standalone .
+
+      - name: Upload build to server
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          port: ${{ secrets.SSH_PORT }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          source: deploy.tar.gz
+          target: "~/"
+
+      - name: Extract and restart app
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          port: ${{ secrets.SSH_PORT }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            set -e
+            cd ~/kalihcoffee
+            rm -rf .next/standalone
+            mkdir -p .next/standalone
+            tar -xzf ~/deploy.tar.gz -C .next/standalone
+            rm ~/deploy.tar.gz
+            mkdir -p tmp
+            touch tmp/restart.txt
