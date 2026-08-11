@@ -50,9 +50,9 @@ const CARDS: IntentCard[] = [
 ];
 
 export default function IntentGrid() {
-  // pt dipisah dari pb: di mobile pt-24 penuh menumpuk dengan padding bawah
-  // LegalClinicTeaser dan jarak kartu teaser ke judul ini jadi ~144px. pb tetap
-  // 24 karena di bawahnya Facilities butuh nafas penuh sebelum ganti warna.
+  // pt dipisah dari pb: di mobile pt-24 penuh menumpuk dengan pb-16 Hero dan
+  // jaraknya ke judul ini jadi ~160px. pb tetap 24 karena di bawahnya
+  // Facilities butuh nafas penuh sebelum ganti warna.
   return (
     <section id="intent" data-reveal className="pt-12 pb-24 sm:pt-24 px-gutter max-w-container-max mx-auto">
       <div className="mb-16">
