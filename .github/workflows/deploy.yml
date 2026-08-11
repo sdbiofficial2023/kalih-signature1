@@ -23,8 +23,18 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      # Secret dilewatkan sebagai env, bukan diinterpolasi ke dalam perintah:
+      # kalau ditempel langsung, isi token yang mengandung $, backtick, atau
+      # tanda kutip akan diurai oleh shell dan file-nya rusak tanpa error.
       - name: Write .env.local
-        run: echo "${{ secrets.ENV_LOCAL }}" > .env.local
+        env:
+          ENV_LOCAL: ${{ secrets.ENV_LOCAL }}
+        run: |
+          if [ -z "$ENV_LOCAL" ]; then
+            echo "::error::Secret ENV_LOCAL kosong — set di Settings > Secrets and variables > Actions."
+            exit 1
+          fi
+          printf '%s\n' "$ENV_LOCAL" > .env.local
 
       - name: Build
         run: pnpm run build
@@ -43,6 +53,8 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
+          # Kosongkan secret ini kalau key-nya dibuat tanpa passphrase.
+          passphrase: ${{ secrets.SSH_PASSPHRASE }}
           source: deploy.tar.gz
           target: "~/"
 
@@ -53,6 +65,7 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
+          passphrase: ${{ secrets.SSH_PASSPHRASE }}
           script: |
             set -e
             cd ~/kalihcoffee
